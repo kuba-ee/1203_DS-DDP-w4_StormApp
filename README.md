@@ -1,7 +1,7 @@
 ## The Most Alarming Weather Events
 *Shiny Application and Reproducible Pitch*
 
-*This is a project for* **Developing Data Products** *course, which is a part of Coursera’s* **Data Science** *and* **Data Science: Statistics and Machine Learning** *Specializations*. It consists of Shiny Application *[StormApp](http://kuba-ee.shinyapps.io/StormApp/)*, reactively calculating the most dangerous weather events based on [NOAA Storm Events Database](http://www.ncdc.noaa.gov/stormevents/choosedates.jsp?statefips=-999%2CALL), and Reproducible Pitch [Presentation](http://rpubs.com/kuba-ee/699405) with some details about the project.
+*This is a project for* **Developing Data Products** *course, which is a part of Coursera’s* **Data Science** *and* **Data Science: Statistics and Machine Learning** *Specializations*. It consists of Shiny Application *[StormApp](http://kuba-ee.shinyapps.io/StormApp/)*, reactively calculating the most dangerous weather events based on [NOAA Storm Events Database](http://www.ncdc.noaa.gov/stormevents/choosedates.jsp?statefips=-999%2CALL), and Reproducible Pitch [Presentation](http://rpubs.com/kuba-ee/709824) with some details about the project.
 
 ### Subject
 NOAA has been collecting data on most massive storms and other severe weather events in the US since 1950. These phenomena harm people causing deaths and injuries, and damage economics, that is property and crops.
