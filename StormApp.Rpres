@@ -45,7 +45,7 @@ Elements
 Data Summary
 ========================================================
 class: small-code
-- Cleaning and processing of raw data have been carried out during  *Reproducible Research [Storm Project](http://rpubs.com/kuba-ee/693354)*
+- Cleaning and processing of raw data have been carried out during  *Reproducible Research [Storm Project](http://rpubs.com/kuba-ee/709793)*
 
 ```{r storm}
 library(data.table)
