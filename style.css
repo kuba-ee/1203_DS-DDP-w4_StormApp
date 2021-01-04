@@ -1,0 +1,55 @@
+<style>
+
+.small-code pre code {
+  font-size: 0.65em;
+}
+
+.section .reveal .state-background{
+background-color: #e9e6ff;
+background-size: cover;
+}
+
+.section .reveal h1 {
+    color: #7866FF;
+    font-family: Cambria, Georgia, serif;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-top: 0.1px;
+  }
+  
+.section .reveal p {
+    color: #5d5c66;
+    font-family: Cambria, Georgia, serif;
+    font-size: 1.1em;
+    margin-block-start: 2px;
+    margin-block-end: 2px;
+  }
+
+.reveal .state-background {
+  background: #e6f0ff;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal p, .reveal ul {
+  font-family: Cambria, Georgia, serif;
+  word-wrap: normal;
+  -moz-hyphens: none;
+}
+
+.reveal h1, .reveal h2, .reveal h3 {
+  color: #66A3FF;
+}
+
+.reveal p {
+  color: #45484c;
+  font-size: 0.9em;      
+}
+
+.reveal ul {
+  color: #45484c;
+  font-size: 0.8em;      
+}
+
+.small-code pre code {
+  font-size: 0.65em;
+}
+</style>

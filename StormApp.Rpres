@@ -1,0 +1,89 @@
+```{r setup, echo = FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning=FALSE)
+```
+
+The Most Alarming Weather Events
+========================================================
+author: Kuba
+date: December 3, 2020
+autosize: true
+css: style.css
+
+<div align="center"><img src
+= "./figures/storm400.jpg"></div>
+
+Shiny Application and Reproducible Pitch
+
+NOAA Storm data, 1950-2011
+
+Subject
+========================================================
+The U.S. National Oceanic and Atmospheric Administration ([NOAA](http://www.ncdc.noaa.gov/)) collects data on most massive storms and weather events in the US:
+
+- *when and where they occur*,
+- *estimates of any harm to humans, and damage to economics*
+
+The aim is to find out which types of severe weather events are most harmful to population health and have the most significant economic consequences
+
+It can be used for proper government preparation to such events so that to prioritise resources and prevent destructive outcomes to the extent possible
+
+More information can be found at NOAA [Storm Events FAQ](http://www.ncdc.noaa.gov/stormevents/faq.jsp)
+
+Elements
+========================================================
+- Shiny Application *[StormApp](http://kuba-ee.shinyapps.io/StormApp/)* deployed on Rstudio's shiny server
+    + documentation for users
+    + widget input panel of lists for *Harm to Humans (total harm, deaths/ injuries dangers)* and *Damage to Economics (total damage, dangers to property/ crops)*
+    + reactive output of plots/ tables of Top Dangers to Humans and Economics
+       + plots show Top-10 Dangers for chosen category
+       + tables displays top-list of Dangers according to selected length (10, 20, 48 - *the total number of events types*)
+    + shared [server.R](http://github.com/kuba-ee/1203_DS-DDP-w4_StormApp/blob/main/server.R) and [ui.R](http://github.com/kuba-ee/1203_DS-DDP-w4_StormApp/blob/main/ui.R) code on github
+- Current Presentation
+    + done with Rstudio Presenter ([code](http://github.com/kuba-ee/1203_DS-DDP-w4_StormApp/blob/main/StormApp.Rpres)) and hosted on Rpubs
+    + R expression evaluated/ displayed, and server calculation displayed
+
+Data Summary
+========================================================
+class: small-code
+- Cleaning and processing of raw data have been carried out during  *Reproducible Research [Storm Project](http://rpubs.com/kuba-ee/693354)*
+
+```{r storm}
+library(data.table)
+storm <- fread("./data/storm.csv"); storm[,3:8]
+```
+- Weights of each severe event type in total harm and damage have been derived from calculated danger ratio for single event
+
+```{r danger}
+danger <- fread("./data/danger.csv"); head(danger)
+```
+
+Server Calculations
+========================================================
+class: small-code
+- Calculations performed by `server.R` when *Total Harm to Humans plot* is selected
+```{r harm}
+library(dplyr); library(ggplot2)
+topHARM <- danger %>% transmute(
+  EVTYPE,`TOTAL_HARM, %`=`DEATHS, %`+`INJURIES, %`,
+  `DEATHS, %`,`INJURIES, %`) %>%
+  arrange(desc(`TOTAL_HARM, %`))
+topH <- topHARM %>% head(n = 10)
+topH <- melt(
+  select(topH, EVTYPE, `DEATHS, %`, `INJURIES, %`))
+topH$EVTYPE <- reorder(topH$EVTYPE, topH$value)
+gtopH<- topH %>%
+  ggplot(aes(x = EVTYPE, y = value,
+             fill = variable, order = variable)) +
+  geom_bar(stat="identity") + coord_flip() +
+  scale_fill_manual(
+    name="",values =c("firebrick3","springgreen3"))+
+  xlab("Event Type")+ ylab("Total Harm, %")+
+  labs(title ="Top-10 DANGERS to HUMANS, %")+
+  theme(plot.title = element_text(size = rel(0.9)),
+        axis.line =
+          element_line(size = 3, colour = "grey80"))
+```
+***
+``` {r plot, echo = FALSE}
+gtopH
+```
