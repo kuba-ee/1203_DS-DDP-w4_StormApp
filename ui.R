@@ -17,7 +17,7 @@ shinyUI(fluidPage(theme = shinytheme("flatly"),
         ),
         mainPanel(
             tabsetPanel(
-                tabPanel("About",includeMarkdown("./INSTRUCTIONS.md")),  
+                tabPanel("About",includeMarkdown("./README.md")),  
                 tabPanel("Plots",column(10,plotOutput("Plot1"),
                                         plotOutput("Plot2"))),
                 tabPanel("Tables", column(4, wellPanel(
